@@ -3,5 +3,18 @@ project(PharmacyMS)
 
 set(CMAKE_C_STANDARD 11)
 
+FIND_PACKAGE(PkgConfig REQUIRED)
+
+INCLUDE_DIRECTORIES(${GTK_INCLUDE_DIRS})
+LINK_DIRECTORIES(${GTK_LIBRARY_DIRS})
+
+PKG_CHECK_MODULES(GTK REQUIRED gtk+-3.0)
+
+ADD_DEFINITIONS(${GTK_CFLAGS_OTHER})
+
+add_definitions(${GTK_CFLAGS_OTHER})
+target_link_libraries(PharmacyMS ${GTK_LIBRARIES})
+
+
 set(SOURCE_FILES main.c main.c)
 add_executable(pharmacy ${SOURCE_FILES})
