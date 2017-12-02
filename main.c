@@ -1,5 +1,5 @@
-
 #include <gtk/gtk.h>
+
 GtkBuilder *builder;
 GtkWidget *window, *window1;
 int main(int argc, char **argv)

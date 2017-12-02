@@ -13,7 +13,7 @@ PKG_CHECK_MODULES(GTK REQUIRED gtk+-3.0)
 ADD_DEFINITIONS(${GTK_CFLAGS_OTHER})
 
 add_definitions(${GTK_CFLAGS_OTHER})
-target_link_libraries(PharmacyMS ${GTK_LIBRARIES})
+
 
 
 set(SOURCE_FILES main.c main.c)
