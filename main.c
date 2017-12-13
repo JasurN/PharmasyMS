@@ -4,6 +4,7 @@
 
 GtkBuilder *builder;
 GtkWidget *window, *window1;
+GtkLabel *warnlabel;
 
 
 int main(int argc, char **argv)
@@ -18,10 +19,15 @@ int main(int argc, char **argv)
       return (0);
    }
 
+
+
+
    window=GTK_WIDGET( gtk_builder_get_object(builder, "logwindow"));
    gtk_builder_connect_signals(builder, NULL);
    gtk_widget_show_all(window);
    gtk_main();
+
+
    return (0);
 }
 void on_enter_but_clicked(){
@@ -40,6 +46,9 @@ void on_enter_but_clicked(){
       g_print(login);
       g_print(password);
    } else{
+       GtkLabel* warn=(GtkLabel*) gtk_builder_get_object(builder, "warning");
+       const gchar *text = "Login or Password wrong";
+       gtk_label_set_text(GTK_LABEL(warn), text);
       g_print("Wrong");
 
    }
