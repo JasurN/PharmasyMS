@@ -1,20 +1,16 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include <gtk/gtk.h>
 #include <string.h>
 #define username "admin"
+#define target "Trimol"
 
 GtkBuilder *builder;
 GtkWidget *window, *window1;
-GtkTextBuffer *buffer1;
+GtkTextBuffer *buffer1, *buffer2;
 GtkTextIter start, end;
 GtkTextIter *iter;
 
-enum {
-    LIST_ID,
-    LIST_BRAND,
-    LIST_MODEL,
-    LIST_PRICE,
-    N_COLUMNS
-};
 
 int main(int argc, char **argv)
 {
@@ -54,18 +50,13 @@ void on_enter_but_clicked(){
       window1=GTK_WIDGET( gtk_builder_get_object(builder, "window1"));
        GtkLabel* storename=(GtkLabel*) gtk_builder_get_object(builder, "drugstore");
        gtk_label_set_text(GTK_LABEL(storename), name);
-       char *data=" ID  |      NAME      |   PRICE   |  PRODUCER    ";
 
-       GtkTextView* tab1=(GtkTextView*) gtk_builder_get_object(builder, "display1");
-       buffer1=gtk_text_view_get_buffer(GTK_TEXT_VIEW(tab1));
-       gtk_text_buffer_set_text(buffer1, data ,-1);
 
 
 
       gtk_widget_show_all(window1);
       gtk_widget_destroy(window);
-      g_print(login);
-      g_print(password);
+
    } else{
        GtkLabel* warn=(GtkLabel*) gtk_builder_get_object(builder, "warning");
        const gchar *text = "Login or Password wrong";
@@ -74,3 +65,38 @@ void on_enter_but_clicked(){
 
    }
 }
+
+void search_but_clicked(){
+    const char *searchedtext;
+    GtkEntry* searchfield = (GtkEntry*) gtk_builder_get_object(builder, "search_entry");
+    searchedtext = gtk_entry_get_text(searchfield);
+    if(strcmp(searchedtext,"")!=0) {
+        if (strcmp(searchedtext, target) == 0) {
+            char *data = " 123                                  Trimol                             3500                         NikaPharm   ";
+
+            GtkTextView *tab1 = (GtkTextView *) gtk_builder_get_object(builder, "display1");
+            buffer1 = gtk_text_view_get_buffer(GTK_TEXT_VIEW(tab1));
+            gtk_text_buffer_set_text(buffer1, data, -1);
+        }
+    }
+}
+
+void add_but_clicked(){
+    const char *amount, *date;
+    GtkTextView *tab2 = (GtkTextView*) gtk_builder_get_object(builder, "display2");
+    GtkEntry* amountfield = (GtkEntry*) gtk_builder_get_object(builder, "amount");
+    GtkEntry* datefield = (GtkEntry*) gtk_builder_get_object(builder, "date");
+    amount=gtk_entry_get_text(amountfield);
+    date=gtk_entry_get_text(datefield);
+
+    char order[500]="123         Trimol        ";
+    strcat(order, amount);
+    strcat(order, ",       ");
+    strcat(order, date);
+    buffer2=gtk_text_view_get_buffer(GTK_TEXT_VIEW(tab2));
+    gtk_text_buffer_set_text(buffer2, order, -1);
+
+
+
+}
+

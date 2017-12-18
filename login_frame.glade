@@ -232,27 +232,10 @@ Please log in to access the application!</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="margin_left">25</property>
-                <property name="margin_top">16</property>
                 <property name="label" translatable="yes">Search for medicine:</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSearchEntry" id="search_field">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="margin_top">12</property>
-                <property name="primary_icon_name">edit-find-symbolic</property>
-                <property name="primary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">False</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
                 <property name="top_attach">1</property>
               </packing>
             </child>
@@ -277,6 +260,7 @@ Please log in to access the application!</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
+                <signal name="clicked" handler="add_but_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -341,6 +325,7 @@ Please log in to access the application!</property>
               <object class="GtkLabel" id="column_label">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_top">10</property>
                 <property name="label" translatable="yes"> ID         |                        NAME                        |        PRICE        |     PRODUCER          </property>
               </object>
               <packing>
@@ -355,6 +340,7 @@ Please log in to access the application!</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="margin_left">10</property>
+                <property name="margin_top">10</property>
                 <property name="label" translatable="yes">ID |     NAME    |AMOUNT|    DATE</property>
               </object>
               <packing>
@@ -377,7 +363,31 @@ Please log in to access the application!</property>
               </packing>
             </child>
             <child>
-              <placeholder/>
+              <object class="GtkEntry" id="search_entry">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="search_but">
+                <property name="label" translatable="yes">Search</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <signal name="clicked" handler="search_but_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
             </child>
             <child>
               <placeholder/>
