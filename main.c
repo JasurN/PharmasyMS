@@ -4,8 +4,9 @@
 
 GtkBuilder *builder;
 GtkWidget *window, *window1;
-GtkCellRenderer *renderer;
-GtkTreeViewColumn *col;
+GtkTextBuffer *buffer1;
+GtkTextIter start, end;
+GtkTextIter *iter;
 
 enum {
     LIST_ID,
@@ -46,16 +47,18 @@ void on_enter_but_clicked(){
    GtkEntry* pass=(GtkEntry*) gtk_builder_get_object(builder, "password_field");
    login=gtk_entry_get_text(log);
    password=gtk_entry_get_text(pass);
-    char *name="OxyMed";
+
    if (strcmp(login, username)==0 && strcmp(password, username)==0){
+       char *name="OxyMed";
 
       window1=GTK_WIDGET( gtk_builder_get_object(builder, "window1"));
        GtkLabel* storename=(GtkLabel*) gtk_builder_get_object(builder, "drugstore");
        gtk_label_set_text(GTK_LABEL(storename), name);
-       GtkTreeView* list=(GtkTreeView*) gtk_builder_get_object(builder,"table1");
-       renderer=gtk_cell_renderer_text_new();
-       col=gtk_tree_view_column_new_with_attributes("ID", renderer,"text",LIST_ID,NULL);
-       gtk_tree_view_append_column(GTK_TREE_VIEW(list), col);
+       char *data=" ID  |      NAME      |   PRICE   |  PRODUCER    ";
+
+       GtkTextView* tab1=(GtkTextView*) gtk_builder_get_object(builder, "display1");
+       buffer1=gtk_text_view_get_buffer(GTK_TEXT_VIEW(tab1));
+       gtk_text_buffer_set_text(buffer1, data ,-1);
 
 
 
