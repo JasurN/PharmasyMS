@@ -72,7 +72,19 @@ void search_but_clicked(){
     searchedtext = gtk_entry_get_text(searchfield);
     if(strcmp(searchedtext,"")!=0) {
         if (strcmp(searchedtext, target) == 0) {
-            char *data = " 123                                  Trimol                             3500                         NikaPharm   ";
+            char data[800]="";
+            char *space="         |        ";
+            char *id = " 123";
+            char *name=" Trimol ";
+            char *price= " 3500 ";
+            char *producer= " NikaPharm ";
+            strcat(data, id);
+            strcat(data, space);
+            strcat(data, name);
+            strcat(data, space);
+            strcat(data, price);
+            strcat(data, space);
+            strcat(data, producer);
 
             GtkTextView *tab1 = (GtkTextView *) gtk_builder_get_object(builder, "display1");
             buffer1 = gtk_text_view_get_buffer(GTK_TEXT_VIEW(tab1));

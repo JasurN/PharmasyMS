@@ -325,8 +325,9 @@ Please log in to access the application!</property>
               <object class="GtkLabel" id="column_label">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">start</property>
                 <property name="margin_top">10</property>
-                <property name="label" translatable="yes"> ID         |                        NAME                        |        PRICE        |     PRODUCER          </property>
+                <property name="label" translatable="yes">    ID    |               NAME                |  PRICE  |     PRODUCER          </property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
